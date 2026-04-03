@@ -36,8 +36,13 @@ body {
     left: 0;
 }
 
-.top-line { top: 100px; }
-.bottom-line { top: 200px; }
+.top-line {
+     top: 100px; 
+}
+
+.bottom-line { 
+    top: 200px; 
+}
 
 .block {
     position: absolute;

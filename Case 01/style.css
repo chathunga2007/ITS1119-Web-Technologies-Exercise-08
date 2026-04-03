@@ -54,20 +54,3 @@ p{
     width: 30vw;
     height: auto;
 }
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #1bc274;
-    border: none;
-    border-radius: 5px;
-    width: 150px;
-    cursor: pointer;
-}
-
-
-#btn-stop {
-    display: none;
-    background-color: #ec5050;
-}

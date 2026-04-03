@@ -1,4 +1,4 @@
-const wrapper = document.getElementById('blocks-wrapper');
+const wrapper = document.getElementById('block-wrapper');
 
 const colors = ['#FFC0CB', '#A020F0', '#FF0000', '#008000', '#0000FF', '#FFFF00']; 
 
@@ -15,12 +15,10 @@ function renderQueue() {
         if (index === 0) {
             block.style.left = '50px';
             block.style.top = '40px';
-        } 
-        else if (index === 5) {
+        }else if (index === 5) {
             block.style.left = '650px';
             block.style.top = '210px';
-        } 
-        else {
+        }else {
             let xPos = 50 + (index * 120);
             block.style.left = `${xPos}px`;
             block.style.top = '125px';
