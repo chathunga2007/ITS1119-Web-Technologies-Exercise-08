@@ -8,6 +8,10 @@ const men = [
 ];
 
 let queue = ["A", "B", "C", "D", "E", "F"];
+let intervalId = null;
+
+const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
 
 function renderQueue() {
     for (let i = 0; i < men.length; i++) {
@@ -20,7 +24,27 @@ function rotateQueue() {
     renderQueue();
 }
 
+function startRotation() {
+    if (intervalId !== null) return;
+
+    intervalId = setInterval(rotateQueue, 1000);
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+}
+
+function stopRotation() {
+    if (intervalId !== null) {
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+}
+
 window.addEventListener('load', () => {
     renderQueue();
-    setInterval(rotateQueue, 2000);
+    startRotation();
+
+    startBtn.addEventListener('click', startRotation);
+    stopBtn.addEventListener('click', stopRotation);
 });

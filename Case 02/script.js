@@ -3,6 +3,10 @@ const wrapper = document.getElementById('block-wrapper');
 const colors = ['#FFC0CB', '#A020F0', '#FF0000', '#008000', '#0000FF', '#FFFF00']; 
 
 let queue = [...colors]; 
+let intervalId = null;
+
+const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
 
 function renderQueue() {
     wrapper.innerHTML = '';
@@ -31,10 +35,30 @@ function renderQueue() {
 function shiftQueue() {
     const lastColor = queue.pop();
     queue.unshift(lastColor);
-    
     renderQueue();
 }
 
-renderQueue();
+function startRotation() {
+    if (intervalId !== null) return;
 
-setInterval(shiftQueue, 1500);
+    intervalId = setInterval(shiftQueue, 1500);
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+}
+
+function stopRotation() {
+    if (intervalId !== null) {
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+}
+
+window.addEventListener('load', () => {
+    renderQueue();
+    startRotation();
+
+    startBtn.addEventListener('click', startRotation);
+    stopBtn.addEventListener('click', stopRotation);
+});
